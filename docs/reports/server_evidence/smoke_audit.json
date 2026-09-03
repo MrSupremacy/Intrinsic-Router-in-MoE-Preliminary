@@ -1,0 +1,161 @@
+{
+  "utc": "2026-08-28T14:13:23.389197+00:00",
+  "implementation": "43ad5d2b3993fad30c012ce7138cb5a2702bed91de460196e2c2560ea037c758",
+  "run_id": "server_smoke02",
+  "scope": "512 train / 32 validation per task, k13, seed0; not formal results",
+  "counts": {
+    "training_runs": 14,
+    "checkpoints": 154,
+    "A": 164,
+    "B": 34,
+    "probe": 162,
+    "probe_with_q": 52,
+    "E_layers": 24
+  },
+  "phase0": {
+    "sst2": {
+      "conditions": 44,
+      "max_force_all_error": 0.0
+    },
+    "mnli": {
+      "conditions": 44,
+      "max_force_all_error": 0.0
+    }
+  },
+  "best_states": [
+    {
+      "task": "sst2",
+      "arm": "R4",
+      "variant": "default",
+      "k": 13,
+      "seed": 0,
+      "name": "step_6",
+      "epoch": 3
+    },
+    {
+      "task": "sst2",
+      "arm": "G1",
+      "variant": "default",
+      "k": 13,
+      "seed": 0,
+      "name": "step_8",
+      "epoch": 4
+    },
+    {
+      "task": "sst2",
+      "arm": "G2",
+      "variant": "aux_0.001",
+      "k": 13,
+      "seed": 0,
+      "name": "step_8",
+      "epoch": 4
+    },
+    {
+      "task": "sst2",
+      "arm": "G2",
+      "variant": "aux_0.01",
+      "k": 13,
+      "seed": 0,
+      "name": "step_12",
+      "epoch": 6
+    },
+    {
+      "task": "sst2",
+      "arm": "G2",
+      "variant": "aux_0.1",
+      "k": 13,
+      "seed": 0,
+      "name": "step_8",
+      "epoch": 4
+    },
+    {
+      "task": "sst2",
+      "arm": "G3",
+      "variant": "default",
+      "k": 13,
+      "seed": 0,
+      "name": "step_6",
+      "epoch": 3
+    },
+    {
+      "task": "sst2",
+      "arm": "G4",
+      "variant": "default",
+      "k": 13,
+      "seed": 0,
+      "name": "step_18",
+      "epoch": 9
+    },
+    {
+      "task": "mnli",
+      "arm": "R4",
+      "variant": "default",
+      "k": 13,
+      "seed": 0,
+      "name": "step_14",
+      "epoch": 7
+    },
+    {
+      "task": "mnli",
+      "arm": "G1",
+      "variant": "default",
+      "k": 13,
+      "seed": 0,
+      "name": "step_16",
+      "epoch": 8
+    },
+    {
+      "task": "mnli",
+      "arm": "G2",
+      "variant": "aux_0.001",
+      "k": 13,
+      "seed": 0,
+      "name": "step_18",
+      "epoch": 9
+    },
+    {
+      "task": "mnli",
+      "arm": "G2",
+      "variant": "aux_0.01",
+      "k": 13,
+      "seed": 0,
+      "name": "final",
+      "epoch": 10
+    },
+    {
+      "task": "mnli",
+      "arm": "G2",
+      "variant": "aux_0.1",
+      "k": 13,
+      "seed": 0,
+      "name": "final",
+      "epoch": 10
+    },
+    {
+      "task": "mnli",
+      "arm": "G3",
+      "variant": "default",
+      "k": 13,
+      "seed": 0,
+      "name": "step_16",
+      "epoch": 8
+    },
+    {
+      "task": "mnli",
+      "arm": "G4",
+      "variant": "default",
+      "k": 13,
+      "seed": 0,
+      "name": "step_18",
+      "epoch": 9
+    }
+  ],
+  "normalized_rows": 33448,
+  "aggregated_rows": 33448,
+  "png_files": 60,
+  "pdf_files": 60,
+  "table_files": 5,
+  "input_files_verified": 32,
+  "original_inputs_verified": true,
+  "passed": true
+}

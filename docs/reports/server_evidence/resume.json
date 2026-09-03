@@ -1,0 +1,30 @@
+{
+  "scope": "real-asset smoke CUDA resume: stop at epoch5 and restart in a fresh process",
+  "arms": [
+    {
+      "arm": "R4",
+      "checkpoints": [
+        "step_10",
+        "final"
+      ],
+      "routers_optimizer_scheduler_and_all_rng_exactly_equal": true
+    },
+    {
+      "arm": "G3",
+      "checkpoints": [
+        "step_10",
+        "final"
+      ],
+      "routers_optimizer_scheduler_and_all_rng_exactly_equal": true
+    },
+    {
+      "arm": "G4",
+      "checkpoints": [
+        "step_10",
+        "final"
+      ],
+      "routers_optimizer_scheduler_and_all_rng_exactly_equal": true
+    }
+  ],
+  "passed": true
+}

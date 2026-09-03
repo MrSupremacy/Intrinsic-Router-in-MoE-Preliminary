@@ -1,0 +1,20 @@
+{
+  "utc": "2026-08-28T14:17:01.821030+00:00",
+  "python": "3.12.3",
+  "versions": {
+    "numpy": "2.4.3",
+    "torch": "2.11.0+cu126",
+    "transformers": "4.57.6",
+    "datasets": "3.6.0",
+    "pyarrow": "25.0.1",
+    "matplotlib": "3.11.1"
+  },
+  "implementation": "43ad5d2b3993fad30c012ce7138cb5a2702bed91de460196e2c2560ea037c758",
+  "total": 60,
+  "passed": 60,
+  "failures": [],
+  "errors": [],
+  "skipped": [],
+  "success": true,
+  "scope": "unit and synthetic fixtures; not real-data CUDA validation"
+}

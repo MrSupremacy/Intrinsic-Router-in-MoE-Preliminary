@@ -1,0 +1,1136 @@
+{
+  "results": [
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "R1",
+        "variant": "default",
+        "k": 6,
+        "seed": null
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "R1",
+        "variant": "default",
+        "k": 13,
+        "seed": null
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "R1",
+        "variant": "default",
+        "k": 19,
+        "seed": null
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "R1",
+        "variant": "default",
+        "k": 26,
+        "seed": null
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "R2",
+        "variant": "default",
+        "k": 6,
+        "seed": null
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "R2",
+        "variant": "default",
+        "k": 13,
+        "seed": null
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "R2",
+        "variant": "default",
+        "k": 19,
+        "seed": null
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "R2",
+        "variant": "default",
+        "k": 26,
+        "seed": null
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "R3",
+        "variant": "default",
+        "k": 6,
+        "seed": null
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "R3",
+        "variant": "default",
+        "k": 13,
+        "seed": null
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "R3",
+        "variant": "default",
+        "k": 19,
+        "seed": null
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "R3",
+        "variant": "default",
+        "k": 26,
+        "seed": null
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "R4",
+        "variant": "default",
+        "k": 6,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "R4",
+        "variant": "default",
+        "k": 13,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "R4",
+        "variant": "default",
+        "k": 19,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "R4",
+        "variant": "default",
+        "k": 26,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "G0",
+        "variant": "default",
+        "k": 6,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "G0",
+        "variant": "default",
+        "k": 13,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "G0",
+        "variant": "default",
+        "k": 19,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "G0",
+        "variant": "default",
+        "k": 26,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "G1",
+        "variant": "default",
+        "k": 6,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "G1",
+        "variant": "default",
+        "k": 13,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "G1",
+        "variant": "default",
+        "k": 19,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "G1",
+        "variant": "default",
+        "k": 26,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "G2",
+        "variant": "aux_0.001",
+        "k": 6,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "G2",
+        "variant": "aux_0.001",
+        "k": 13,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "G2",
+        "variant": "aux_0.001",
+        "k": 19,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "G2",
+        "variant": "aux_0.001",
+        "k": 26,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "G2",
+        "variant": "aux_0.01",
+        "k": 6,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "G2",
+        "variant": "aux_0.01",
+        "k": 13,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "G2",
+        "variant": "aux_0.01",
+        "k": 19,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "G2",
+        "variant": "aux_0.01",
+        "k": 26,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "G2",
+        "variant": "aux_0.1",
+        "k": 6,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "G2",
+        "variant": "aux_0.1",
+        "k": 13,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "G2",
+        "variant": "aux_0.1",
+        "k": 19,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "G2",
+        "variant": "aux_0.1",
+        "k": 26,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "G3",
+        "variant": "default",
+        "k": 6,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "G3",
+        "variant": "default",
+        "k": 13,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "G3",
+        "variant": "default",
+        "k": 19,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "G3",
+        "variant": "default",
+        "k": 26,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "G4",
+        "variant": "default",
+        "k": 6,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "G4",
+        "variant": "default",
+        "k": 13,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "G4",
+        "variant": "default",
+        "k": 19,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    },
+    {
+      "condition": {
+        "task": "sst2",
+        "arm": "G4",
+        "variant": "default",
+        "k": 26,
+        "seed": 0
+      },
+      "force_all_max_abs": 0.0,
+      "layers": {
+        "encoder_layer_00": 0.0,
+        "encoder_layer_01": 0.0,
+        "encoder_layer_02": 0.0,
+        "encoder_layer_03": 0.0,
+        "encoder_layer_04": 0.0,
+        "encoder_layer_05": 0.0,
+        "decoder_layer_00": 0.0,
+        "decoder_layer_01": 0.0,
+        "decoder_layer_02": 0.0,
+        "decoder_layer_03": 0.0,
+        "decoder_layer_04": 0.0,
+        "decoder_layer_05": 0.0
+      }
+    }
+  ],
+  "r2_r3_diagnostic_only": {
+    "encoder_layer_00": {
+      "13": {
+        "overlap": 1.0,
+        "exact_set_agreement": 1.0
+      }
+    },
+    "encoder_layer_01": {
+      "13": {
+        "overlap": 1.0,
+        "exact_set_agreement": 1.0
+      }
+    },
+    "encoder_layer_02": {
+      "13": {
+        "overlap": 1.0,
+        "exact_set_agreement": 1.0
+      }
+    },
+    "encoder_layer_03": {
+      "13": {
+        "overlap": 1.0,
+        "exact_set_agreement": 1.0
+      }
+    },
+    "encoder_layer_04": {
+      "13": {
+        "overlap": 1.0,
+        "exact_set_agreement": 1.0
+      }
+    },
+    "encoder_layer_05": {
+      "13": {
+        "overlap": 1.0,
+        "exact_set_agreement": 1.0
+      }
+    },
+    "decoder_layer_00": {
+      "13": {
+        "overlap": 1.0,
+        "exact_set_agreement": 1.0
+      }
+    },
+    "decoder_layer_01": {
+      "13": {
+        "overlap": 1.0,
+        "exact_set_agreement": 1.0
+      }
+    },
+    "decoder_layer_02": {
+      "13": {
+        "overlap": 1.0,
+        "exact_set_agreement": 1.0
+      }
+    },
+    "decoder_layer_03": {
+      "13": {
+        "overlap": 1.0,
+        "exact_set_agreement": 1.0
+      }
+    },
+    "decoder_layer_04": {
+      "13": {
+        "overlap": 1.0,
+        "exact_set_agreement": 1.0
+      }
+    },
+    "decoder_layer_05": {
+      "13": {
+        "overlap": 1.0,
+        "exact_set_agreement": 1.0
+      }
+    }
+  },
+  "r2_r3_equal_sets_required": false,
+  "tf32": false
+}

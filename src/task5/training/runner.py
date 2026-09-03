@@ -14,7 +14,7 @@ from task5.training.schedule import scheduler_scale
 
 def train_condition(config, condition, run_id, resume=None, stop_after_epoch=None):
     if not condition.trainable:
-        raise ValueError("Only R4/R4-R2Init/G1/G2/G3/G4 are trained")
+        raise ValueError("Only trainable router arms may enter training; backbone remains frozen")
     if resume is not None and resume != "final" and not (resume.startswith("step_") and resume[5:].isdigit()):
         raise ValueError("Resume names are 'final' or 'step_<number>', not arbitrary paths")
     directory = run_path(config, "train", condition, run_id)

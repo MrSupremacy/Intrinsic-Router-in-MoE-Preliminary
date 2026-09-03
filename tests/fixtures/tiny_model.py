@@ -9,6 +9,8 @@ def tiny_model(arm="R4", variant="default", seed=0):
     from task5.substrate.model import attach, ffn_layers
     from task5.routing.routers import make_hash_table, raw_centroids
     config = load_config()
+    if arm in ("R2-soft", "R4-hard"):
+        config["variants"].append({"arm": arm, "name": "default", "trainable": arm == "R4-hard"})
     config["execution"]["device"] = "cpu"
     config["data"]["loader_workers"] = 0
     config["data"]["pin_memory"] = False

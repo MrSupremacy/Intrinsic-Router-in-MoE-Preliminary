@@ -3,12 +3,12 @@ from __future__ import annotations
 import argparse
 import json
 
-from task5.common.config import ARMS, conditions, extension_spec, load_config, validate_run_id
+from task5.common.config import ARMS, conditions, extension_arms, extension_spec, load_config, validate_run_id
 
 
 def parser():
     p = argparse.ArgumentParser(description="Task 5: independent train -> capture -> metrics -> figures")
-    p.add_argument("command", choices=["matrix", "preflight", "prepare", "validate", "train", "capture", "metrics", "aggregate", "tables", "figures", "smoke"])
+    p.add_argument("command", choices=["matrix", "preflight", "prepare", "validate", "train", "capture", "metrics", "aggregate", "tables", "figures", "smoke", "phase-a-check", "phase-a-report"])
     p.add_argument("--suite", help="YAML suite, default configs/suites/main.yaml")
     p.add_argument("--local", help="Server-only input paths and device overrides")
     p.add_argument("--run-id", default="main01", help="Explicit run family; never automatically select latest outputs")
@@ -31,6 +31,9 @@ def parser():
 
 def select_conditions(config, args):
     selected = conditions(config)
+    extension = config.get("extension")
+    if extension and "arms" in extension and args.command in ("matrix", "preflight", "train", "capture", "metrics"):
+        selected = [c for c in selected if c.arm in extension_arms(extension)]
     for key in ("task", "arm", "variant", "k", "seed"):
         value = getattr(args, key)
         if value is not None:
@@ -54,8 +57,10 @@ def main(argv=None):
     if extension is not None:
         if args.command in ("prepare", "validate", "smoke"):
             raise ValueError("Extension mode reuses an immutable prepared/validated base; do not rerun this stage")
-        if args.command in ("train", "capture", "metrics") and any(c.arm != extension["arm"] for c in selected):
-            raise ValueError(f"Extension model/data stages require --arm {extension['arm']}")
+        if args.command in ("train", "capture", "metrics") and any(c.arm not in extension_arms(extension) for c in selected):
+            raise ValueError(f"Extension model/data stages require arms {extension_arms(extension)}")
+        if "arms" in extension and args.command in ("aggregate", "tables", "figures"):
+            raise ValueError("Use phase-a-report for the isolated F0 comparison; old results are read-only")
         if args.command == "capture" and args.part in ("E", "all"):
             raise ValueError("Extension mode reuses the base E capture; run A, select-best, and diagnostics separately")
     model_stages = {"prepare", "validate", "train", "smoke"}
@@ -82,10 +87,13 @@ def main(argv=None):
                     prepared = verify_prepared(config, task, args.run_id)
                     print(task, json.dumps({"reused_prepared_protocol": prepared["protocol"]}))
         return
-    if args.command in ("aggregate", "tables", "figures", "smoke") and (args.shard_count != 1 or any(
+    if args.command in ("aggregate", "tables", "figures", "smoke", "phase-a-check", "phase-a-report") and (args.shard_count != 1 or any(
             getattr(args, key) is not None for key in ("task", "arm", "variant", "k", "seed"))):
         raise ValueError("This stage requires the complete suite; subset via a separately named suite, not silent filtering")
-    if args.command in ("prepare", "validate"):
+    if args.command in ("phase-a-check", "phase-a-report"):
+        from task5.aggregation.phase_a import check_base, report
+        (check_base if args.command == "phase-a-check" else report)(config, args.run_id)
+    elif args.command in ("prepare", "validate"):
         if args.shard_count != 1 or any(getattr(args, key) is not None for key in ("arm", "variant", "k", "seed")):
             raise ValueError("Shared preparation/validation partitions by --task only")
         for task in sorted({c.task for c in selected}):

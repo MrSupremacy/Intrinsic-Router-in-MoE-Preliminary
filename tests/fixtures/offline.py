@@ -5,13 +5,13 @@ import hashlib
 import numpy as np
 
 from task5.capture.runner import capture_path, header_for
-from task5.common.config import conditions, load_config, protocol_id
+from task5.common.config import R4_FAMILY, conditions, load_config, protocol_id, repository_root
 from task5.common.context import input_header, shared_path
 from task5.common.io import complete, read_json, write_json
 
 
-def fixture_config(directory):
-    c = load_config()
+def fixture_config(directory, phase_a=False):
+    c = load_config(repository_root() / "configs/suites/phaseA_f0.yaml" if phase_a else None)
     c["suite"].update(name="fixture", tasks=["sst2"], top_k=[6], train_limit=4, validation_limit=4)
     c["execution"]["output_root"] = str(directory)
     c["model"].update(encoder_layers=1, decoder_layers=1, d_ff=128, expert_size=2)
@@ -72,7 +72,7 @@ def build_fixture(config, run_id):
                 write_json(fixture_table_path(path / "loads.parquet"), {"layer_id": names, "valid_token_count": [n] * 2,
                            "assignment_counts": [np.bincount(selected.reshape(-1), minlength=E).tolist()] * 2})
                 complete(path, header_for(config, condition, state, header, "B"))
-            with_q = condition.arm in ("R4", "R4-R2Init") or not condition.trainable or epoch in (best_epoch, 10)
+            with_q = condition.arm in R4_FAMILY or not condition.trainable or epoch in (best_epoch, 10)
             path = capture_path(config, condition, run_id, state, "probe")
             for layer in names:
                 values = {"sample_id": ids, "token_position": [0] * n, "layer_id": [layer] * n, "selected_experts": selected.tolist()}

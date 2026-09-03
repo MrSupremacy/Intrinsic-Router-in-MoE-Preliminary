@@ -1,6 +1,7 @@
 # Intrinsic Router in MoE - Preliminary
 
 独立实验代码库：在既有T5-small dense checkpoint与balanced K-Means expert拆分上比较R1–R4、R4-R2Init、G0–G4。
+现已支持 Phase A **F0 补测** R2-soft（静态）和 R4-hard（系数ST、router-only）；只补新臂及独立八臂图表的入口见 [RUNBOOK §17](RUNBOOK.md#17-phase-a-f0只补-r2-soft-与-r4-hard)。本次不实现 fullFT。
 不导入旧MoEfication/EMoE工程，不重训dense，不重新聚类，不下载模型或数据。
 
 本仓库上传源码、通用配置与配置模板、运行脚本、测试和工程文档。

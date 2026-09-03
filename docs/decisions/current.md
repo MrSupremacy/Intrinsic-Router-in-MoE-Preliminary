@@ -20,6 +20,10 @@
 
 ## 服务器适配修复
 
+2026-09-04 Phase A F0 补测：R2-soft 使用固定 raw centroid、L2 cosine（eps=1e-12）、选中项 k×softmax，温度1且无 sqrt(D) 缩放；只测 seed_fixed。R4-hard 与 R4 同 seed/layer 正交初始化、RMS 1e-6 打分；系数 `1 + (w_soft - w_soft.detach())`，前向精确1、反向保留 soft 导数，不 detach hidden 或 expert 输出。Backbone 始终冻结，只更新路由；保留24次训练、264点及全程D/churn。
+
+补测配置在 `configs/suites/phaseA_f0.yaml` 和 `configs/extensions/phaseA_f0.yaml`，不改变旧 main 矩阵。旧 v3 原精度 normalized 数据只读且固定SHA256，新数据保留新protocol；独立 `task6_phaseA_F0_result` 仅绘制用户指定八臂。运行命令统一见 RUNBOOK §17。新 protocol 对 Python 源码换行符规范化后哈希，避免 Windows/Linux checkout 仅因 CRLF/LF 不同而使新产物无法互用；旧记录仍使用显式原 protocol，不改写历史身份。
+
 - datasets内部fingerprint缩为32字符，避免四进程后缀使其超过64字符上限；完整SHA256缓存目录与声明不变。
 - 每次日志上下文退出时解除代理与该次文件的关联；第三方库保留的旧代理改为转发到当前日志流。
   不关闭终端、不复开旧日志；正常退出、异常退出、连续任务、嵌套与Linux fork均有回归测试。

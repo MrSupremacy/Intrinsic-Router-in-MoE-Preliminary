@@ -8,9 +8,9 @@ import hashlib
 import json
 import yaml
 
-ARMS = ("R1", "R2", "R3", "R4", "R4-R2Init", "G0", "G1", "G2", "G3", "G4")
-TRAINABLE_ARMS = frozenset(("R4", "R4-R2Init", "G1", "G2", "G3", "G4"))
-R4_FAMILY = frozenset(("R4", "R4-R2Init"))
+ARMS = ("R1", "R2", "R2-soft", "R3", "R4", "R4-R2Init", "R4-hard", "G0", "G1", "G2", "G3", "G4")
+TRAINABLE_ARMS = frozenset(("R4", "R4-R2Init", "R4-hard", "G1", "G2", "G3", "G4"))
+R4_FAMILY = frozenset(("R4", "R4-R2Init", "R4-hard"))
 
 
 class ConfigLoader(yaml.SafeLoader):
@@ -113,10 +113,24 @@ def validate_config(c):
         raise ValueError("The confirmed R4-R2Init extension is required")
     extension = c.get("extension")
     if extension is not None:
-        if set(extension) != {"arm", "base_run_id", "base_protocol"}:
-            raise ValueError("extension requires exactly arm/base_run_id/base_protocol")
-        if extension["arm"] != "R4-R2Init":
-            raise ValueError("Only the confirmed R4-R2Init arm may extend an existing run")
+        legacy = set(extension) == {"arm", "base_run_id", "base_protocol"}
+        phase_a = set(extension) == {"arms", "base_run_id", "base_protocol", "source_report"}
+        if legacy:
+            if extension["arm"] != "R4-R2Init":
+                raise ValueError("Legacy extension supports only R4-R2Init")
+        elif phase_a:
+            if extension["arms"] != ["R2-soft", "R4-hard"]:
+                raise ValueError("Phase A F0 extends exactly R2-soft and R4-hard")
+            if any((arm, "default") not in seen for arm in extension["arms"]):
+                raise ValueError("New arms must be present in the Phase A F0 suite")
+            source = extension["source_report"]
+            if set(source) != {"protocol", "analysis", "sha256"}:
+                raise ValueError("source_report requires protocol/analysis/sha256")
+            for value in source.values():
+                if not isinstance(value, str) or len(value) != 64 or any(ch not in "0123456789abcdef" for ch in value):
+                    raise ValueError("source_report identities must be SHA256 digests")
+        else:
+            raise ValueError("Unsupported extension declaration")
         validate_run_id(extension["base_run_id"])
         value = extension["base_protocol"]
         if not isinstance(value, str) or len(value) != 64 or any(ch not in "0123456789abcdef" for ch in value):
@@ -134,7 +148,9 @@ def implementation_id(model_only=False):
         relative = path.relative_to(root)
         # Offline metric/plot changes must not invalidate expensive model captures.
         return not model_only or relative.parts[0] not in ("metrics", "aggregation", "visualization")
-    return digest({p.relative_to(root).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
+    # Git checkouts on Windows/Linux may differ only by line endings. New
+    # protocols use canonical source bytes; historical protocols stay explicit.
+    return digest({p.relative_to(root).as_posix(): hashlib.sha256(p.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
                    for p in sorted(root.rglob("*.py")) if include(p)})
 
 
@@ -167,9 +183,13 @@ def recorded_protocol(config, condition, run_id):
     dependencies and retain the verified base protocol recorded at creation.
     """
     extension = extension_spec(config, run_id)
-    if extension is not None and condition.arm != extension["arm"]:
+    if extension is not None and condition.arm not in extension_arms(extension):
         return extension["base_protocol"]
     return protocol_id(config)
+
+
+def extension_arms(extension):
+    return extension.get("arms", [extension.get("arm")])
 
 
 @dataclass(frozen=True)

@@ -1,24 +1,26 @@
 from __future__ import annotations
 
 from collections import defaultdict
+from pathlib import Path
 import csv
 import json
 
 from task5.common.config import protocol_id, root_for
 from task5.common.io import read_json
 
-COLORS = {"R1": "#111111", "R2": "#777777", "R3": "#b3b3b3", "R4": "#d62728", "R4-R2Init": "#d62728",
+COLORS = {"R1": "#111111", "R2": "#777777", "R2-soft": "#8c564b", "R3": "#b3b3b3", "R4": "#d62728", "R4-R2Init": "#d62728", "R4-hard": "#e377c2",
           "G0": "#9467bd", "G1": "#1f77b4", "G2": "#2ca02c", "G3": "#ff7f0e", "G4": "#17becf"}
 STYLES = {"aux_0.001": ":", "aux_0.01": "--", "aux_0.1": "-."}
-ARM_STYLES = {"R4-R2Init": "--"}
-ARM_MARKERS = {"R4-R2Init": "s"}
+ARM_STYLES = {"R4-R2Init": "--", "R2-soft": "--", "R4-hard": "-."}
+ARM_MARKERS = {"R4-R2Init": "s", "R2-soft": "^", "R4-hard": "D"}
 DISPLAY = ["accuracy", "relative_performance", "cv", "gini", "maximum_share", "churn", "exact_set_change",
            "oracle_overlap", "activation_coverage", "selected_mean", "random_mean", "excess", "ratio"]
 PROPORTIONS = {"accuracy", "invalid_rate", "maximum_share", "churn", "exact_set_change", "oracle_overlap", "activation_coverage"}
 
 
-def data_file(config, run_id, section, name="metrics.json"):
-    result = read_json(root_for(config) / "results/data" / section / run_id / name)
+def data_file(config, run_id, section, name="metrics.json", *, result_root=None):
+    root = Path(result_root) if result_root is not None else root_for(config) / "results"
+    result = read_json(root / "data" / section / run_id / name)
     if result["meta"]["protocol"] != protocol_id(config):
         raise ValueError("Results were produced with a different protocol")
     return result
@@ -46,11 +48,11 @@ def formatted(value, metric, unit=None):
     return f"{value:.3e}" if value != 0 and abs(value) < 1e-4 else f"{value:.4f}"
 
 
-def tables(config, run_id):
-    aggregated = data_file(config, run_id, "aggregated")["rows"]
-    normalized = data_file(config, run_id, "normalized")["rows"]
-    paired = data_file(config, run_id, "aggregated", "paired_differences.json")["rows"]
-    root = root_for(config) / "results/tables"
+def tables(config, run_id, *, result_root=None):
+    aggregated = data_file(config, run_id, "aggregated", result_root=result_root)["rows"]
+    normalized = data_file(config, run_id, "normalized", result_root=result_root)["rows"]
+    paired = data_file(config, run_id, "aggregated", "paired_differences.json", result_root=result_root)["rows"]
+    root = (Path(result_root) if result_root is not None else root_for(config) / "results") / "tables"
     main = [r for r in aggregated if r["layer"] == "model" and r["role"] in ("best", "static") and r["metric"] in DISPLAY]
     save_csv(root / "main" / run_id / "best_validation.csv", main)
     save_csv(root / "diagnostics" / run_id / "trajectories_and_final.csv", [r for r in aggregated if r["role"] in ("trajectory", "final")])
@@ -66,13 +68,13 @@ def tables(config, run_id):
             stream.write(f"| {row['task']} | {row['arm']} | {row['variant']} | {row['k']} | {row['group']}/{row['metric']} | {mean} ± {std} |\n")
 
 
-def figures(config, run_id):
+def figures(config, run_id, *, result_root=None, random_reference_arm="R1"):
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     import numpy as np
-    rows = data_file(config, run_id, "aggregated")["rows"]
-    root = root_for(config) / "results/figures"
+    rows = data_file(config, run_id, "aggregated", result_root=result_root)["rows"]
+    root = (Path(result_root) if result_root is not None else root_for(config) / "results") / "figures"
 
     def finish(fig, folder, name):
         path = root / folder / run_id / name
@@ -106,7 +108,7 @@ def figures(config, run_id):
         if group == "coactivation_consistency" and metric == "selected_mean":
             reference = {r["metric"]: {} for r in rows if r["metric"] in ("random_mean", "random_low", "random_high")}
             for row in rows:
-                if (row["task"] == task and row["group"] == group and row["arm"] == "R1" and row["role"] == "static"
+                if (row["task"] == task and row["group"] == group and row["arm"] == random_reference_arm and row["role"] == "static"
                         and row["layer"] == "model" and row["metric"] in reference):
                     reference[row["metric"]][row["k"]] = row["mean"]
             budgets = sorted(reference["random_mean"])

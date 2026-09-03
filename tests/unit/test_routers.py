@@ -32,6 +32,42 @@ class RouterTests(TestCase):
         weights[:, 0].sum().backward()
         self.assertIsNotNone(first.summary.grad)
 
+    def test_r2_soft_is_fixed_cosine_with_unscaled_selected_softmax(self):
+        t = self.torch
+        soft, hard = self.router("R2-soft"), self.router("R2")
+        self.assertFalse(any(p.requires_grad for p in soft.parameters()))
+        self.assertTrue(t.equal(soft.centroids, hard.centroids))
+        x = self.x.clone().requires_grad_()
+        kwargs = {"q": None, "valid": t.ones(2, dtype=t.bool)}
+        indices, weights = soft(x, 2, **kwargs)
+        self.assertTrue(t.equal(indices, hard(x, 2, **kwargs)[0]))
+        normalize = t.nn.functional.normalize
+        scores = normalize(x, dim=-1, eps=1e-12) @ normalize(self.cents, dim=-1, eps=1e-12).T
+        self.assertTrue(t.equal(weights, 2 * t.softmax(scores.gather(-1, indices), dim=-1)))
+        weights[:, 0].sum().backward()
+        self.assertGreater(x.grad.abs().sum().item(), 0)
+
+    def test_r4_hard_coefficient_st_forward_and_derivatives(self):
+        t = self.torch
+        hard, soft = self.router("R4-hard", seed=2), self.router("R4", seed=2)
+        self.assertTrue(t.equal(hard.summary, soft.summary))
+        xh, xs = (self.x.clone().requires_grad_() for _ in range(2))
+        kwargs = {"q": None, "valid": t.ones(2, dtype=t.bool)}
+        ih, wh = hard(xh, 2, **kwargs)
+        iss, ws = soft(xs, 2, **kwargs)
+        self.assertTrue(t.equal(ih, iss))
+        self.assertTrue(t.equal(wh, t.ones_like(wh)))
+        expert_output = t.tensor([[2., 7.], [3., 1.]], requires_grad=True)
+        (expert_output * wh).sum().backward()
+        (expert_output.detach() * ws).sum().backward()
+        self.assertTrue(t.equal(expert_output.grad, t.ones_like(expert_output)))
+        self.assertTrue(t.equal(hard.summary.grad, soft.summary.grad))
+        self.assertGreater(hard.summary.grad.abs().sum().item(), 0)
+        self.assertTrue(t.equal(xh.grad, xs.grad))
+        self.assertGreater(xh.grad.abs().sum().item(), 0)
+        with t.no_grad():
+            self.assertTrue(t.equal(hard.eval()(self.x, 2, **kwargs)[1], t.ones_like(wh)))
+
     def test_common_gate_initialization_is_paired(self):
         t = self.torch
         gates = [self.router("G1"), self.router("G2", .1), self.router("G3"), self.router("G4")]

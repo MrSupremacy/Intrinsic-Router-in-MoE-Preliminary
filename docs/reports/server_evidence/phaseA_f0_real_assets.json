@@ -1,0 +1,137 @@
+{
+  "scope": "diagnostic only; NOT formal experiment results",
+  "protocol": "d19c870c844a7503c9943a45a10fb320a6c6b266209ba98ed6b7b812557410b3",
+  "observations": [
+    {
+      "task": "sst2",
+      "arm": "R2-soft",
+      "valid_tokens": {
+        "encoder_layer_00": 41,
+        "encoder_layer_01": 41,
+        "encoder_layer_02": 41,
+        "encoder_layer_03": 41,
+        "encoder_layer_04": 41,
+        "encoder_layer_05": 41,
+        "decoder_layer_00": 4,
+        "decoder_layer_01": 4,
+        "decoder_layer_02": 4,
+        "decoder_layer_03": 4,
+        "decoder_layer_04": 4,
+        "decoder_layer_05": 4
+      },
+      "samples": 2,
+      "trainable_parameters": 0,
+      "predictions": [
+        "positive",
+        "negative"
+      ]
+    },
+    {
+      "task": "sst2",
+      "arm": "R4-hard",
+      "valid_tokens": {
+        "encoder_layer_00": 41,
+        "encoder_layer_01": 41,
+        "encoder_layer_02": 41,
+        "encoder_layer_03": 41,
+        "encoder_layer_04": 41,
+        "encoder_layer_05": 41,
+        "decoder_layer_00": 4,
+        "decoder_layer_01": 4,
+        "decoder_layer_02": 4,
+        "decoder_layer_03": 4,
+        "decoder_layer_04": 4,
+        "decoder_layer_05": 4
+      },
+      "samples": 2,
+      "trainable_parameters": 393216,
+      "predictions": [
+        "sst",
+        "negative"
+      ],
+      "loss": 6.6895270347595215,
+      "gradients": {
+        "encoder_layer_00": 975.4224243164062,
+        "encoder_layer_01": 1091.054443359375,
+        "encoder_layer_02": 397.56854248046875,
+        "encoder_layer_03": 519.0322265625,
+        "encoder_layer_04": 395.2117614746094,
+        "encoder_layer_05": 372.69537353515625,
+        "decoder_layer_00": 123.97217559814453,
+        "decoder_layer_01": 111.40625,
+        "decoder_layer_02": 339.9543762207031,
+        "decoder_layer_03": 151.61936950683594,
+        "decoder_layer_04": 229.62498474121094,
+        "decoder_layer_05": 317.263671875
+      },
+      "frozen_sha256": "a69945feb782b90eb74a38ca8c8f37bfc55f3c536b38a890373d54041e79af3b",
+      "exact_reload": true
+    },
+    {
+      "task": "mnli",
+      "arm": "R2-soft",
+      "valid_tokens": {
+        "encoder_layer_00": 74,
+        "encoder_layer_01": 74,
+        "encoder_layer_02": 74,
+        "encoder_layer_03": 74,
+        "encoder_layer_04": 74,
+        "encoder_layer_05": 74,
+        "decoder_layer_00": 4,
+        "decoder_layer_01": 4,
+        "decoder_layer_02": 4,
+        "decoder_layer_03": 4,
+        "decoder_layer_04": 4,
+        "decoder_layer_05": 4
+      },
+      "samples": 2,
+      "trainable_parameters": 0,
+      "predictions": [
+        "neutral",
+        "contradiction"
+      ]
+    },
+    {
+      "task": "mnli",
+      "arm": "R4-hard",
+      "valid_tokens": {
+        "encoder_layer_00": 74,
+        "encoder_layer_01": 74,
+        "encoder_layer_02": 74,
+        "encoder_layer_03": 74,
+        "encoder_layer_04": 74,
+        "encoder_layer_05": 74,
+        "decoder_layer_00": 4,
+        "decoder_layer_01": 4,
+        "decoder_layer_02": 4,
+        "decoder_layer_03": 4,
+        "decoder_layer_04": 4,
+        "decoder_layer_05": 4
+      },
+      "samples": 2,
+      "trainable_parameters": 393216,
+      "predictions": [
+        "premisepremisepremisepremise",
+        "neutralpremisepremisepremise"
+      ],
+      "loss": 5.976940631866455,
+      "gradients": {
+        "encoder_layer_00": 1081.2801513671875,
+        "encoder_layer_01": 1055.175048828125,
+        "encoder_layer_02": 481.11480712890625,
+        "encoder_layer_03": 474.3631286621094,
+        "encoder_layer_04": 311.98828125,
+        "encoder_layer_05": 559.3279418945312,
+        "decoder_layer_00": 42.52373504638672,
+        "decoder_layer_01": 71.33676147460938,
+        "decoder_layer_02": 96.28108215332031,
+        "decoder_layer_03": 125.4664306640625,
+        "decoder_layer_04": 86.03130340576172,
+        "decoder_layer_05": 306.72808837890625
+      },
+      "frozen_sha256": "013e7f62a4fcdf28ed9d88b0b1875d97d2a64c90c75edbdfa2ef0426442ba8ab",
+      "exact_reload": true
+    }
+  ],
+  "success": true
+}

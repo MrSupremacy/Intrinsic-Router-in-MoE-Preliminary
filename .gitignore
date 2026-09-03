@@ -12,6 +12,7 @@ inputs/**
 /artifacts/
 /runs/
 /results/
+/task6_phaseA_F0_result/
 /tmp/
 /build/
 /dist/

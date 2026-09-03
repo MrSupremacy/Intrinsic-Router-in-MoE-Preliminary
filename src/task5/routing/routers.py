@@ -30,14 +30,14 @@ class Router(nn.Module):
         self.noise_seed = stream_seed(seed or 0, "noise", layer)
         self.aux = None
         self.register_buffer("pending", torch.zeros(self.E, dtype=torch.long), persistent=False)
-        if arm == "R2":
+        if arm in ("R2", "R2-soft"):
             self.register_buffer("centroids", centroids.clone())
-        elif arm in ("R3", "R4", "R4-R2Init"):
+        elif arm in ("R3", "R4", "R4-R2Init", "R4-hard"):
             initial = centroids.clone()
-            if arm == "R4":
+            if arm in ("R4", "R4-hard"):
                 generator = torch.Generator(device=initial.device).manual_seed(stream_seed(seed, "summary_init", layer))
                 nn.init.orthogonal_(initial, gain=spec["orthogonal_gain"], generator=generator)
-            self.summary = nn.Parameter(initial, requires_grad=arm in ("R4", "R4-R2Init"))
+            self.summary = nn.Parameter(initial, requires_grad=arm != "R3")
         elif arm == "G0":
             if hash_table is None:
                 raise ValueError("G0 requires a shared vocabulary permutation table")
@@ -59,11 +59,14 @@ class Router(nn.Module):
             x = x.float()
             if self.arm == "R1":
                 return stable_topk(q, k), None
-            if self.arm == "R2":
+            if self.arm in ("R2", "R2-soft"):
                 eps = self.spec["l2_epsilon"]
                 scores = F.normalize(x, dim=-1, eps=eps) @ F.normalize(self.centroids.float(), dim=-1, eps=eps).T
-                return stable_topk(scores, k), None
-            if self.arm in ("R3", "R4", "R4-R2Init"):
+                indices = stable_topk(scores, k)
+                # R2 cosine scale, temperature 1: no RMS or sqrt(D) rescaling.
+                weights = k * F.softmax(scores.gather(-1, indices), dim=-1) if self.arm == "R2-soft" else None
+                return indices, weights
+            if self.arm in ("R3", "R4", "R4-R2Init", "R4-hard"):
                 eps = self.spec["rms_epsilon"]
                 summary = self.summary.float()
                 xn = x * torch.rsqrt(x.square().mean(-1, keepdim=True) + eps)
@@ -98,7 +101,13 @@ class Router(nn.Module):
                         self.aux = self.aux_weight * self.E * (f * probs[valid].mean(0)).sum()
                     else:
                         self.pending.add_(counts)
-            return indices, k * F.softmax(logits.gather(-1, indices), dim=-1)
+            weights = k * F.softmax(logits.gather(-1, indices), dim=-1)
+            if self.arm == "R4-hard":
+                # Coefficient-level straight-through: exactly one forward,
+                # soft coefficient derivative backward. Do NOT detach x or
+                # expert activations: upstream routers still need that path.
+                weights = torch.ones_like(weights) + (weights - weights.detach())
+            return indices, weights
 
     @torch.no_grad()
     def after_step(self):

@@ -22,7 +22,7 @@ class TinyT5Tests(TestCase):
         with torch.no_grad():
             expected = dense(**batch, use_cache=False).logits
         for arm, variant in (("R1", "default"), ("R2", "default"), ("R3", "default"), ("R4", "default"),
-                             ("R4-R2Init", "default"),
+                             ("R4-R2Init", "default"), ("R2-soft", "default"), ("R4-hard", "default"),
                              ("G0", "default"), ("G1", "default"), ("G2", "aux_0.01"), ("G3", "default"), ("G4", "default")):
             model, ctrl, batch, _ = tiny_model(arm, variant)
             model.eval()
@@ -111,7 +111,7 @@ class TinyT5Tests(TestCase):
             ctrl.after_step()
             return loss.detach().clone(), order
 
-        for arm in ("R4", "R4-R2Init", "G3", "G4"):
+        for arm in ("R4", "R4-R2Init", "R4-hard", "G3", "G4"):
             with self.subTest(arm=arm), TemporaryDirectory() as temp:
                 first = setup(arm)
                 seed_dropout(0)
@@ -135,3 +135,26 @@ class TinyT5Tests(TestCase):
                         else:
                             self.assertTrue(torch.allclose(value, expected_state[layer][key], atol=1e-6, rtol=1e-5))
                 self.assertEqual(first[4].state_dict()["last_epoch"], second[4].state_dict()["last_epoch"])
+
+    def test_f0_hard_updates_routers_but_no_backbone_parameters(self):
+        import torch
+        from tests.fixtures.tiny_model import tiny_model
+        model, ctrl, batch, _ = tiny_model("R4-hard")
+        before = {name: p.detach().clone() for name, p in model.named_parameters()}
+        parameters = [p for p in model.parameters() if p.requires_grad]
+        self.assertEqual(len(parameters), len(ctrl.wrappers))
+        optimizer = torch.optim.Adam(parameters, lr=1e-3)
+        model.train()
+        ctrl.teacher_batch(batch)
+        model(**batch, use_cache=False).loss.backward()
+        for wrapper in ctrl.wrappers.values():
+            self.assertGreater(wrapper.router.summary.grad.abs().sum().item(), 0)
+        optimizer.step()
+        for name, p in model.named_parameters():
+            if p.requires_grad:
+                self.assertFalse(torch.equal(p, before[name]), name)
+            else:
+                self.assertIsNone(p.grad, name)
+                self.assertTrue(torch.equal(p, before[name]), name)
+        static, _, _, _ = tiny_model("R2-soft")
+        self.assertFalse(any(p.requires_grad for p in static.parameters()))

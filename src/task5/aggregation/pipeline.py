@@ -70,7 +70,7 @@ def aggregate_rows(rows, config):
     aggregated = []
     for key, items in groups.items():
         identity = dict(zip(("task", "arm", "variant", "k", "role", "group", "layer", "metric", "epoch"), key))
-        deterministic = identity["arm"] in ("dense", "R1", "R2", "R3")
+        deterministic = identity["arm"] in ("dense", "R1", "R2", "R2-soft", "R3")
         expected = {None} if deterministic else set(config["suite"]["seeds"])
         if {row["seed"] for row in items} != expected or len(items) != len(expected):
             raise ValueError(f"Missing/duplicate seed observations: {identity}")
@@ -116,6 +116,8 @@ def _base_snapshot(config, run_id, extension):
 
 def aggregate(config, run_id):
     extension = extension_spec(config, run_id)
+    if extension and "arms" in extension:
+        raise ValueError("Phase A F0 must use phase-a-report; existing results are read-only")
     extension_base = None
     if extension is None:
         rows = collect_rows(config, run_id)

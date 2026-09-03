@@ -1,5 +1,7 @@
 # Task 5 全流程唯一运行手册
 
+**2026-09 补测入口**：已完成 `formal20260830a`、只补 R2-soft/R4-hard 时直接看 **§17**，不重跑前面的部署、smoke、prepare 或旧臂。仍是 F0（冻结 backbone），不是 fullFT。
+
 这是本代码库唯一需要照着执行的运行文档。顺序固定为：
 
 ```text
@@ -418,3 +420,48 @@ SHARD_COUNT="<single_node_gpu_count>" \
 `<single_node_gpu_count>`填写该节点实际用于本实验的GPU数；单卡填`1`，8卡填`8`。这是单机多进程独立condition分片，不是DDP。脚本绝不会运行prepare或共享E；路径由`configs/local/formal_r4_r2init.yaml`固定到原正式输出根。
 
 如需逐阶段人工控制，则给第7–13节对应命令都增加`--arm R4-R2Init`，并把`--local "$FORMAL_LOCAL"`替换为`--local configs/local/formal_r4_r2init.yaml`。capture不得使用`--part all/E`，只依次运行`A`、`select-best`、`diagnostics`；aggregate/tables/figures不带arm筛选，由扩展配置负责安全合并。
+
+## 17. Phase A F0：只补 R2-soft 与 R4-hard
+
+前提：服务器已有 `formal20260830a` 的原主实验及 R4-R2Init v3 完成产物；保持原 `configs/local/formal.yaml` 和 inputs。此次不更新 backbone/expert、dense、不聚类。原 `main.yaml` 矩阵保持不变；补测使用 `phaseA_f0.yaml`，继承完全相同的训练/采集/指标设置，仅改变比较臂列表。扩展配置仅允许新两臂产生记录。
+
+| 新臂 | 本次工作 | 采集 |
+|---|---|---|
+| R2-soft | 不训练，`2 tasks × 4 k = 8` 个静态状态，路径用 `seed_fixed` | A、B、C+D 各一次；不造三份重复、不测 churn |
+| R4-hard | `2 × 4 × 3 = 24` 次 router-only 训练，seeds 0/1/2；`24 × 11 = 264` 点 | 全部 A、C+D；best/final 的 B 去重；十段相邻 churn |
+
+共新增 272 个逻辑状态、272 组 A、272 组 C+D、32–56 组 B；复用既有 dense A/E、probe 和 centroid。R4-hard 初始化与 R4 同 seed/同层配对，训练/评测前向权重为 1，训练反向采用 soft 系数 ST；不是给旧 R4 checkpoint 临时改推理权重。
+
+在**正式八卡节点**的代码库内执行：
+
+```bash
+cd <task5_repo_absolute_path>
+export PYTHON=/opt/task5-venv/bin/python
+GPU_IDS=0,1,2,3,4,5,6,7 SHARD_COUNT=8 \
+  bash scripts/90_formal/extend_phaseA_f0.sh formal20260830a all
+```
+
+`<task5_repo_absolute_path>` 为该节点上的代码库绝对路径；当前测试服务器是 `/mnt/luoyulin_code/fanxuankai/task5_reproduction`。`PYTHON` 沿用已测试环境；若正式节点的虚拟环境位置不同，只替换解释器位置。GPU_IDS 填本次分配的卡号；八张卡各跑独立条件（24 次训练均分为每卡 3 次），每个模型仍只用一张卡，**不是 DDP，不用 torchrun**。在持久终端会话中运行，避免 SSH 断开中止前台进程。
+
+脚本依次完成：旧数据只读身份核验 → 只训练 R4-hard → 两新臂 A → 各 seed 选 best → B/C+D → 六组离线 metric → 指定八臂汇总/表图。无需用户再跑 smoke/Phase 0；开头的自动核验不是重新做实验。任一步失败即停止后续阶段。所有 capture 候选必须齐全，不能缺 seed/epoch 后静默平均。
+
+原始产物仍是原输出根的同级 arm：
+
+```text
+<formal_output_root>/runs/train/<task>/R4-hard/default/k_<k>/seed_<0|1|2>/formal20260830a/
+<formal_output_root>/runs/capture/{validation,probe}/<task>/{R2-soft,R4-hard}/default/k_<k>/seed_<fixed|0|1|2>/formal20260830a/
+<formal_output_root>/runs/metrics/<metric>/<task>/{R2-soft,R4-hard}/default/k_<k>/seed_<fixed|0|1|2>/formal20260830a/
+<formal_output_root>/task6_phaseA_F0_result/{data,tables,figures}/...
+```
+
+当前 `<formal_output_root>` 为 `/mnt/luoyulin_ckpt/fanxuankai/task5_reproduction_output`。新图表只比较 R2、R2-soft、R4、R4-R2Init、R4-hard、G1、G2/aux_0.001、G4。`results/` 及旧 arm 的单条件评分不覆盖。旧 normalized 文件以 SHA256 固定，继承其原始精度和 seed 记录；新指标保持旧六组口径，包括共享原 dense 的共激活，**不换成 F1 当前模型的 E**。旧 G1/G2/G4 没有全程 D，不补造 overlap/coverage 轨迹；它们的 best/final 仍参加比较。
+
+可按同一入口分阶段，末尾 `all` 改为 `train`、`capture`、`metrics`、`report`。已有全部 ckpt 后从 `capture` 开始，不再调用 `train`；完整 capture 可经校验跳过；metric 可离线重算。训练目录已存在时脚本拒绝覆盖，不自动重启训练；中途训练失败可用原 `--resume step_<step>` 单条件恢复机制并配上本节 suite/local，再完成剩余条件。不要重命名或删除既有 ckpt 来绕过检查。
+
+只重绘这八臂的表图（不调用模型）：
+
+```bash
+bash scripts/90_formal/extend_phaseA_f0.sh formal20260830a report
+```
+
+只重写独立结果目录内的派生数据，不改变旧结果。此扩展固定绑定 `formal20260830a`；若换 run、配置或输入，需要重新确认来源，不能仅修改哈希使检查通过。
